@@ -355,8 +355,8 @@ select, input, textarea {
    ========================================================= */
 .cars-hero-section {
   position: relative;
-  background: radial-gradient(circle at 65% 35%, #DC1828 0%, #B80A18 45%, #7D050E 100%);
-  padding: 40px 0 50px;
+  background: #7D050E url('hero-bg.jpg') center right / cover no-repeat;
+  padding: 44px 0 56px;
   overflow: hidden;
 }
 
@@ -366,9 +366,9 @@ select, input, textarea {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: 
-    radial-gradient(ellipse at 80% 50%, rgba(255, 255, 255, 0.12) 0%, transparent 50%),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.4) 100%);
+  background: 
+    linear-gradient(90deg, rgba(125, 5, 14, 0.96) 0%, rgba(184, 10, 24, 0.85) 45%, rgba(220, 24, 40, 0.35) 72%, rgba(15, 23, 42, 0.65) 100%),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.45) 100%);
   pointer-events: none;
 }
 
