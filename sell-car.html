@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sell Your Car Your Way | ZedCars.co.zm Zambia</title>
+  <meta name="description" content="Sell your car instantly for the best cash price or advertise privately to over 500,000 Zambian car buyers. Free valuation and instant WhatsApp connection.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@1,600;1,700&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- RED HEADER (Active Sell Car) -->
+  <header class="cars-header">
+    <div class="cars-header-container">
+      <a href="index.html" class="cars-logo">
+        <span class="logo-script">ZedCars</span><span class="logo-tld">Zambia</span>
+      </a>
+
+      <nav class="cars-nav">
+        <div class="nav-item has-dropdown">
+          <a href="buy-car.html" class="nav-link">Buy Car <i class="fa-solid fa-chevron-down nav-arrow"></i></a>
+          <div class="dropdown-menu">
+            <a href="buy-car.html" class="dropdown-item"><i class="fa-solid fa-car-side"></i> Used Cars for Sale</a>
+            <a href="buy-car.html" class="dropdown-item"><i class="fa-solid fa-car"></i> New Cars for Sale</a>
+            <a href="finance.html" class="dropdown-item"><i class="fa-solid fa-tags"></i> Car Pricing &amp; Specs</a>
+            <a href="buy-car.html?filter=specials" class="dropdown-item"><i class="fa-solid fa-fire"></i> Car Specials</a>
+            <a href="https://wa.me/260975892100?text=Hello%20ZedCars%2C%20please%20help%20me%20find%20a%20car" target="_blank" class="dropdown-item"><i class="fa-brands fa-whatsapp"></i> Help Me Find a Car</a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="sell-car.html" class="nav-link nav-pill-active">Sell Car</a>
+        </div>
+
+        <div class="nav-item has-dropdown mega-dropdown-trigger">
+          <a href="news.html" class="nav-link">News &amp; Reviews <i class="fa-solid fa-chevron-down nav-arrow"></i></a>
+          <div class="dropdown-menu mega-menu">
+            <div class="mega-menu-cols">
+              <div class="mega-links-col">
+                <a href="news.html" class="dropdown-item">Motoring News</a>
+                <a href="news.html" class="dropdown-item">Luxury, Performance &amp; 4x4</a>
+                <a href="news.html" class="dropdown-item">Car Reviews</a>
+                <a href="news.html" class="dropdown-item">Videos &amp; Walkarounds</a>
+                <a href="news.html" class="dropdown-item">Car Launches</a>
+                <a href="news.html" class="dropdown-item">Zambian RTSA &amp; Duty Advice</a>
+              </div>
+              <div class="mega-cards-col">
+                <div class="mega-article-card">
+                  <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=400&q=80" alt="Hilux Legend review">
+                  <span class="mega-article-title">Toyota Hilux 2.8 GD-6: Still Zambia's Undisputed Bakkie Champion?</span>
+                  <a href="news.html" class="btn-mega-red">Car News</a>
+                </div>
+                <div class="mega-article-card">
+                  <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=400&q=80" alt="Land Cruiser Prado">
+                  <span class="mega-article-title">New Prado 250 in Lusaka: Zambian Pricing, Specs &amp; Waitlist</span>
+                  <a href="news.html" class="btn-mega-red">Car News</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="nav-item has-dropdown">
+          <a href="finance.html" class="nav-link">Services &amp; Tools <i class="fa-solid fa-chevron-down nav-arrow"></i></a>
+          <div class="dropdown-menu">
+            <a href="finance.html" class="dropdown-item"><i class="fa-solid fa-calculator"></i> Car Finance Calculator</a>
+            <a href="parts.html" class="dropdown-item"><i class="fa-solid fa-gears"></i> Auto Parts &amp; Staff Gear</a>
+            <a href="sell-car.html" class="dropdown-item"><i class="fa-solid fa-hand-holding-dollar"></i> Free WhatsApp Valuation</a>
+          </div>
+        </div>
+
+        <div class="nav-item has-dropdown">
+          <a href="dealers.html" class="nav-link">Car Dealers <i class="fa-solid fa-chevron-down nav-arrow"></i></a>
+          <div class="dropdown-menu">
+            <a href="dealers.html" class="dropdown-item"><i class="fa-solid fa-location-dot"></i> Dealers in Lusaka</a>
+            <a href="dealers.html" class="dropdown-item"><i class="fa-solid fa-location-dot"></i> Dealers in Kitwe (Copperbelt)</a>
+            <a href="dealers.html" class="dropdown-item"><i class="fa-solid fa-location-dot"></i> Dealers in Ndola</a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="cars-header-right">
+        <a href="dealers.html" class="header-profile-btn">
+          <i class="fa-regular fa-circle-user"></i> Profile (0)
+        </a>
+        <a href="https://wa.me/260975892100?text=Hello%20ZedCars%20Team%2C%20I%20would%20like%20assistance." target="_blank" class="btn-cars-login">
+          <i class="fa-brands fa-whatsapp"></i> WhatsApp
+        </a>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- EXACT REPLICA OF CARS.CO.ZA /sell-car/ (Screenshot 1) -->
+    <div class="page-hero-banner">
+      <div class="container">
+        <div class="breadcrumbs">
+          <a href="index.html">Home</a> <span>&gt;</span> <span>Sell Car</span>
+        </div>
+        <h1 class="page-title">Sell Your Car Your Way</h1>
+        <p class="page-subtitle">Get a competitive offer from a trusted dealer or advertise your car privately to achieve the highest possible price in Zambia.</p>
+      </div>
+    </div>
+
+    <!-- SELL CARDS CONTAINER -->
+    <div class="container sell-page-wrapper">
+      <div class="sell-cards-dual-grid">
+        <!-- CARD 1: SELL CAR INSTANTLY -->
+        <div class="sell-choice-card">
+          <div class="card-head-row">
+            <h2 class="choice-title">Sell Car Instantly</h2>
+            <span class="most-popular-badge">Most Popular</span>
+          </div>
+          <p class="choice-desc">Get the best value for your car and receive the highest cash price directly deposited into your bank account.</p>
+
+          <ul class="choice-perks-list">
+            <li><span class="bullet-dot">•</span> Top-notch service</li>
+            <li><span class="bullet-dot">•</span> Secure, swift payment (ZMW)</li>
+            <li><span class="bullet-dot">•</span> Free service &amp; RTSA transfer assistance</li>
+          </ul>
+
+          <!-- Embedded Quick Valuation Form -->
+          <div class="instant-valuation-card">
+            <h4>Fast Cash Valuation Form</h4>
+            <p>Directly connects to our Zambian appraisal desk on WhatsApp:</p>
+
+            <form id="sellPageForm">
+              <div class="val-form-grid">
+                <div class="val-input-group">
+                  <label for="spMake">Make *</label>
+                  <input type="text" id="spMake" placeholder="e.g. Toyota" required>
+                </div>
+                <div class="val-input-group">
+                  <label for="spModel">Model *</label>
+                  <input type="text" id="spModel" placeholder="e.g. Hilux / Fortuner" required>
+                </div>
+              </div>
+
+              <div class="val-form-grid">
+                <div class="val-input-group">
+                  <label for="spYear">Year *</label>
+                  <select id="spYear" required>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                    <option value="2019">2019</option>
+                    <option value="2018">2018</option>
+                    <option value="2017">2017</option>
+                    <option value="2016">2016</option>
+                    <option value="2015">2015 or older</option>
+                  </select>
+                </div>
+                <div class="val-input-group">
+                  <label for="spMileage">Mileage (approx km) *</label>
+                  <input type="number" id="spMileage" placeholder="e.g. 54000" required>
+                </div>
+              </div>
+
+              <div class="val-form-grid">
+                <div class="val-input-group">
+                  <label for="spCity">City *</label>
+                  <select id="spCity" required>
+                    <option value="Lusaka">Lusaka</option>
+                    <option value="Kitwe">Kitwe</option>
+                    <option value="Ndola">Ndola</option>
+                    <option value="Livingstone">Livingstone</option>
+                    <option value="Kabwe">Kabwe</option>
+                    <option value="Solwezi">Solwezi</option>
+                  </select>
+                </div>
+                <div class="val-input-group">
+                  <label for="spPrice">Expected Price (ZMW)</label>
+                  <input type="number" id="spPrice" placeholder="e.g. 350000">
+                </div>
+              </div>
+
+              <button type="submit" class="btn-submit-valuation">
+                <i class="fa-brands fa-whatsapp"></i> Get the Best Offer Now via WhatsApp
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- CARD 2: SELL CAR PRIVATELY -->
+        <div class="sell-choice-card">
+          <div class="card-head-row">
+            <h2 class="choice-title">Sell Car Privately</h2>
+          </div>
+          <p class="choice-desc">Advertise your car online to over 500,000 potential car buyers across Zambia from only K 21.50 per day.</p>
+
+          <div class="private-pricing-row">
+            <div class="pricing-col">
+              <span class="tier-name">FEATURED</span>
+              <span class="tier-price">K 441</span>
+              <ul class="tier-bullets">
+                <li>• Car active for <strong>14 days</strong></li>
+                <li>• <strong>K 31.50</strong> per day</li>
+                <li>• Highlighted on Search Results</li>
+                <li>• Direct WhatsApp Leads to Your Phone</li>
+              </ul>
+            </div>
+
+            <div class="pricing-col">
+              <span class="tier-name featured-plus">FEATURED PLUS</span>
+              <span class="tier-price">K 645</span>
+              <ul class="tier-bullets">
+                <li>• Car active for <strong>30 days</strong></li>
+                <li>• <strong>K 21.50</strong> per day</li>
+                <li>• Top of Page Placement</li>
+                <li>• Social Media Boost on Facebook &amp; IG</li>
+              </ul>
+            </div>
+          </div>
+
+          <a href="https://wa.me/260966453210?text=Hello%20ZedCars%20Advertising%20Desk%2C%20I%20want%20to%20advertise%20my%20car%20privately%20(Featured%20Plus%20K645)." target="_blank" class="btn-sell-action">
+            Advertise Your Car Now <i class="fa-solid fa-chevron-right"></i>
+          </a>
+
+          <div style="margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--border-subtle);">
+            <h4 style="font-size: 0.95rem; font-weight: 800; margin-bottom: 8px;">Need Advertising Help?</h4>
+            <p style="font-size: 0.84rem; color: #6B7280; margin-bottom: 12px;">Our Lusaka &amp; Copperbelt dealer teams assist with professional photography and RTSA ownership transfer assistance.</p>
+            <a href="https://wa.me/260975892100?text=Hi%2C%20I%20need%20help%20listing%20my%20car%20privately." target="_blank" style="color: var(--cars-red); font-weight: 700; font-size: 0.88rem; display: inline-flex; align-items: center; gap: 6px;">
+              <i class="fa-brands fa-whatsapp"></i> Chat with Listing Support
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="cars-footer">
+    <div class="container footer-content-grid">
+      <div class="footer-brand-col">
+        <a href="index.html" class="cars-logo footer-logo">
+          <span class="logo-script">ZedCars</span><span class="logo-tld">Zambia</span>
+        </a>
+        <p class="footer-desc">
+          Zambia's leading automotive marketplace inspired by cars.co.za. Find certified new and used cars, compare vehicle prices, and connect directly with verified dealers on WhatsApp.
+        </p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://wa.me/260975892100" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-links-col">
+        <h4>Cars for Sale</h4>
+        <ul>
+          <li><a href="buy-car.html?make=Toyota">Toyota Cars in Zambia</a></li>
+          <li><a href="buy-car.html?make=Ford">Ford Rangers &amp; Everest</a></li>
+          <li><a href="buy-car.html?make=Isuzu">Isuzu D-Max Pickups</a></li>
+          <li><a href="buy-car.html?category=Double+Cab">Double Cabs &amp; Bakkies</a></li>
+          <li><a href="buy-car.html?category=SUV">4x4 &amp; SUVs</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4>Car Services</h4>
+        <ul>
+          <li><a href="sell-car.html">Sell My Car Instantly</a></li>
+          <li><a href="sell-car.html">Advertise Car Privately</a></li>
+          <li><a href="finance.html">Car Finance Calculator</a></li>
+          <li><a href="parts.html">Parts &amp; Off-road Gear</a></li>
+          <li><a href="dealers.html">Lusaka &amp; Kitwe Showrooms</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact-col">
+        <h4>WhatsApp Helpdesk</h4>
+        <p>Chat directly with our Zambian client concierge 7 days a week:</p>
+        <a href="https://wa.me/260975892100?text=Hello%20ZedCars%2C%20I%20would%20like%20assistance." target="_blank" class="footer-whatsapp-card">
+          <i class="fa-brands fa-whatsapp"></i>
+          <div>
+            <span class="card-label">Lusaka Showroom Hotline</span>
+            <span class="card-number">+260 975 892 100</span>
+          </div>
+        </a>
+        <span class="registered-badge"><i class="fa-solid fa-shield-check"></i> Licensed Zambian Motor Dealer</span>
+      </div>
+    </div>
+
+    <div class="footer-bottom-bar">
+      <div class="container footer-bottom-flex">
+        <p>&copy; 2026 ZedCars.co.zm Zambia. Inspired by cars.co.za automotive UX. All rights reserved.</p>
+        <div class="footer-legal-links">
+          <a href="#">Terms &amp; Conditions</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">ZRA &amp; RTSA Rules</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

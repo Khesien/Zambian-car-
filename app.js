@@ -1,5 +1,5 @@
 /* =========================================================
-   ZedCars.co.zm - cars.co.za Engine & WhatsApp Orchestration
+   ZedCars.co.zm - Universal Multi-Page Application Logic
    ========================================================= */
 
 // Dealership WhatsApp Hotlines (Zambia +260)
@@ -7,12 +7,12 @@ const DEALER_WHATSAPP_MAIN = '260975892100';      // Lusaka Main Hub
 const DEALER_WHATSAPP_COPPERBELT = '260966453210'; // Kitwe / Ndola Hub
 const DEALER_WHATSAPP_FINANCE = '260971200345';   // Bank Finance Lead
 
-// Currency Formatter
+// Format ZMW Currency
 function formatZMW(num) {
   return 'K ' + Number(num).toLocaleString('en-US');
 }
 
-// Monthly Repayment Formula
+// Calculate Monthly Installment (Zambian standard auto credit)
 function calcInstallment(price, depositPct = 20, termMonths = 48, interestRate = 18.5) {
   const principal = price * (1 - depositPct / 100);
   const monthlyRate = (interestRate / 100) / 12;
@@ -21,7 +21,7 @@ function calcInstallment(price, depositPct = 20, termMonths = 48, interestRate =
 }
 
 // =========================================================
-// VEHICLE INVENTORY DATA (Zambian Market)
+// INVENTORY DATASET (Zambian Market)
 // =========================================================
 const vehicles = [
   {
@@ -44,8 +44,8 @@ const vehicles = [
       'https://images.unsplash.com/photo-1559416523-140ddc3d238c?auto=format&fit=crop&w=1000&q=80',
       'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1000&q=80'
     ],
-    features: ['Motorized Roller Shutter', 'JBL Premium Audio', 'Leather Seats', '360 Parking Camera', 'Rear Diff Lock', 'Towbar Ready'],
-    description: 'Top-of-the-range Toyota Hilux Legend RS. Perfect workhorse and luxury bakkie. Full RTSA documentation and customs duty paid.'
+    features: ['Motorized Roller Shutter', 'JBL Premium Audio', 'Leather Seats', '360 Camera', 'Diff Lock', 'Towbar'],
+    description: 'Top-of-the-range Toyota Hilux Legend RS. Perfect workhorse and luxury double cab. Full RTSA documents, duty paid.'
   },
   {
     id: 2,
@@ -67,8 +67,8 @@ const vehicles = [
       'https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=1000&q=80',
       'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1000&q=80'
     ],
-    features: ['7 Seats', 'Center Console Cool Box', 'Multi-Terrain Select', 'Heated Seats', 'Apple CarPlay', 'Sunroof'],
-    description: 'The executive family safari icon. Extremely smooth ride for long-distance Zambian road trips and heavy off-roading.'
+    features: ['7 Seats', 'Center Cool Box', 'Multi-Terrain Select', 'Heated Seats', 'Apple CarPlay', 'Sunroof'],
+    description: 'The executive family safari icon. Extremely smooth ride for long-distance Zambian highways and bush terrain.'
   },
   {
     id: 3,
@@ -90,7 +90,7 @@ const vehicles = [
       'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1000&q=80',
       'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1000&q=80'
     ],
-    features: ['10-Speed Automatic', 'Adaptive Cruise Control', 'Lane Keeping Aid', 'Wildtrak Leather', 'Sync 3 Touchscreen', 'Mountain Top Roller Lid'],
+    features: ['10-Speed Automatic', 'Adaptive Cruise Control', 'Lane Keeping Aid', 'Wildtrak Leather', 'Sync 3 Touchscreen', 'Roller Lid'],
     description: 'Exceptional styling and torque. Full franchise service history in Zambia with verified low mileage.'
   },
   {
@@ -114,7 +114,7 @@ const vehicles = [
       'https://images.unsplash.com/photo-1559416523-140ddc3d238c?auto=format&fit=crop&w=1000&q=80'
     ],
     features: ['3.0L Reliability', 'IDAS Safety Suite', '9-Inch Display', 'Rear Diff Lock', 'Factory Side Steps'],
-    description: 'Renowned workhorse engineered for rough Copperbelt mining roads. Fuel efficient and cheap to service.'
+    description: 'Renowned workhorse engineered for rough Copperbelt mining roads. Reliable, durable and low maintenance.'
   },
   {
     id: 5,
@@ -159,8 +159,8 @@ const vehicles = [
       'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80',
       'https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=1000&q=80'
     ],
-    features: ['Massive 298kW V8 Engine', 'Hydraulic Suspension', 'Rear Entertainment Screens', 'Cool Box', '360 Camera'],
-    description: 'The master of road presence and desert crossing power. Absolute VIP comfort.'
+    features: ['Massive 298kW V8 Engine', 'Hydraulic Suspension', 'Rear Screens', 'Cool Box', '360 Camera'],
+    description: 'The master of road presence and long-haul VIP comfort.'
   },
   {
     id: 7,
@@ -182,7 +182,7 @@ const vehicles = [
       'https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=1000&q=80',
       'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80'
     ],
-    features: ['Incredible 21 km/L Economy', 'Lexus Interior Finishes', 'Touch Climate Control', 'Power Tailgate'],
+    features: ['21 km/L Fuel Economy', 'Lexus Interior Finishes', 'Touch Climate Control', 'Power Tailgate'],
     description: 'Ultra-refined hybrid crossover. Clean Japanese import with verified auction sheet.'
   },
   {
@@ -205,8 +205,8 @@ const vehicles = [
       'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1000&q=80',
       'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80'
     ],
-    features: ['7-Speed DSG', 'Digital Innovision Cockpit', 'Harman Kardon Sound', 'Panoramic Sunroof', 'GTI Sport Seats'],
-    description: 'The iconic hot hatch. Immaculate condition, lightning shifts, and superb handling.'
+    features: ['7-Speed DSG', 'Digital Cockpit', 'Harman Kardon Sound', 'Panoramic Sunroof', 'GTI Sport Seats'],
+    description: 'The iconic hot hatch. Immaculate condition, rapid dual-clutch transmission, and sporty handling.'
   },
   {
     id: 9,
@@ -228,8 +228,8 @@ const vehicles = [
       'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1000&q=80',
       'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1000&q=80'
     ],
-    features: ['28 km per Liter Fuel Economy', 'Magic Fold-Flat Seats', 'Apple CarPlay & Android Auto', 'Push Start'],
-    description: 'Under K150,000 budget saver! Ideal city car for Lusaka traffic with low maintenance.'
+    features: ['28 km per Liter Economy', 'Magic Fold-Flat Seats', 'Apple CarPlay & Android Auto', 'Push Start'],
+    description: 'Under K150,000 budget saver! Ideal city car for Lusaka traffic with ultra-low fuel costs.'
   },
   {
     id: 10,
@@ -251,7 +251,7 @@ const vehicles = [
       'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80',
       'https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=1000&q=80'
     ],
-    features: ['AMG Styling Package', '9G-Tronic Gearbox', '64-Color Ambient Light', 'Burmester Surround', 'Panoramic Roof'],
+    features: ['AMG Styling', '9G-Tronic Gearbox', '64-Color Ambient Light', 'Burmester Surround', 'Panoramic Roof'],
     description: 'Executive luxury sedan. Elegant stance, flawless interior, and dynamic driving modes.'
   },
   {
@@ -274,8 +274,8 @@ const vehicles = [
       'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1000&q=80',
       'https://images.unsplash.com/photo-1559416523-140ddc3d238c?auto=format&fit=crop&w=1000&q=80'
     ],
-    features: ['Unbreakable LC79 V8', '180L Dual Fuel Tanks', 'Warn Winch', 'Old Man Emu Suspension', 'Front & Rear Lockers'],
-    description: 'Built for the toughest Zambian mining & agricultural terrains. True off-road endurance.'
+    features: ['LC79 V8 Platform', '180L Dual Fuel Tanks', 'Warn Winch', 'Old Man Emu Suspension', 'Diff Lockers'],
+    description: 'Built for the toughest Zambian mining & bush conditions. True off-road endurance.'
   },
   {
     id: 12,
@@ -298,12 +298,12 @@ const vehicles = [
       'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1000&q=80'
     ],
     features: ['16 Passenger Seats', 'Dual Zone High Output AC', 'Reinforced Frame', 'Safety Fire Extinguisher'],
-    description: 'Excellent income-generating minibus. Suitable for staff transportation, school contracts, or tours.'
+    description: 'Income-generating passenger van. Ready for public transport, corporate contracts, or school transport.'
   }
 ];
 
-// Accessories & Parts
-const parts = [
+// Accessories
+const partsData = [
   {
     title: 'Ironman 4x4 Commercial Deluxe Steel Bullbar',
     category: '4x4 Armour',
@@ -331,62 +331,50 @@ const parts = [
     price: 3950,
     image: 'https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=600&q=80',
     desc: 'Collision warning, driver alerts, and Southern Africa offline street maps.'
+  },
+  {
+    title: 'Heavy Duty Reinforced Fiberglass Canopy',
+    category: 'Utility & Cargo',
+    price: 28000,
+    image: 'https://images.unsplash.com/photo-1559416523-140ddc3d238c?auto=format&fit=crop&w=600&q=80',
+    desc: 'Lockable security canopy with sliding side windows and roof load bar mountings.'
+  },
+  {
+    title: 'Optima YellowTop Deep Cycle Heavy Duty Battery',
+    category: 'Electrical & Power',
+    price: 5200,
+    image: 'https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=600&q=80',
+    desc: 'Dual-purpose starting and deep-cycling power. Powers dual fridges and spotlights.'
+  },
+  {
+    title: 'Old Man Emu 2-inch Suspension Lift Kit',
+    category: 'Suspension',
+    price: 32500,
+    image: 'https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=600&q=80',
+    desc: 'Engineered nitrocharger shocks and springs tuned for heavy payload.'
+  },
+  {
+    title: 'Tough Canvas Water-Resistant Seat Covers (Full Set)',
+    category: 'Interior Protection',
+    price: 3200,
+    image: 'https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=600&q=80',
+    desc: 'Durable Zambian ripstop canvas. Protects seats against dust and mud.'
   }
 ];
 
-// =========================================================
-// WHATSAPP URL GENERATOR
-// =========================================================
-function makeCarWhatsAppUrl(car) {
-  const text = `Hello ZedCars.co.zm Zambia! 👋%0A%0AI am interested in this vehicle on your website:%0A%0A🚗 *Vehicle:* ${car.year} ${car.make} ${car.model}%0A💰 *Price:* ${formatZMW(car.price)}%0A📍 *Location:* ${car.location}%0A🏷️ *Ref Code:* ${car.stockId}%0A%0AIs this car available for viewing or test driving? Thank you!`;
-  return `https://wa.me/${DEALER_WHATSAPP_MAIN}?text=${text}`;
+// Helper to create WhatsApp URL
+function createCarWhatsAppUrl(car) {
+  const msg = `Hello ZedCars.co.zm Zambia! 👋%0A%0AI am interested in this vehicle:%0A%0A🚗 *Vehicle:* ${car.year} ${car.make} ${car.model}%0A💰 *Price:* ${formatZMW(car.price)}%0A📍 *Location:* ${car.location}%0A🏷️ *Ref Code:* ${car.stockId}%0A%0APlease let me know if it is available for viewing/test drive. Thank you!`;
+  return `https://wa.me/${DEALER_WHATSAPP_MAIN}?text=${msg}`;
 }
 
-function makeTestDriveUrl(car) {
-  const text = `Hello ZedCars Zambia,%0A%0AI would like to *book a test drive* for the *${car.year} ${car.make} ${car.model}* (Ref: ${car.stockId}) located at your *${car.location}* showroom.%0A%0APlease let me know the available time slots.`;
-  return `https://wa.me/${DEALER_WHATSAPP_MAIN}?text=${text}`;
-}
+// Render Card HTML
+function createCarCardHtml(car) {
+  const monthly = calcInstallment(car.price);
+  const waLink = createCarWhatsAppUrl(car);
 
-// =========================================================
-// FILTER ENGINE & CARD RENDERING
-// =========================================================
-let currentFilters = {
-  keyword: '',
-  make: '',
-  location: '',
-  category: 'all',
-  minPrice: '',
-  maxPrice: '',
-  minYear: '',
-  maxYear: '',
-  sortBy: 'featured'
-};
-
-const carsListingGrid = document.getElementById('carsListingGrid');
-const noCarsBox = document.getElementById('noCarsBox');
-const heroSearchCount = document.getElementById('heroSearchCount');
-
-function renderCars(carsArray) {
-  if (!carsListingGrid) return;
-  carsListingGrid.innerHTML = '';
-
-  if (carsArray.length === 0) {
-    if (noCarsBox) noCarsBox.style.display = 'block';
-    if (heroSearchCount) heroSearchCount.textContent = '0';
-    return;
-  }
-
-  if (noCarsBox) noCarsBox.style.display = 'none';
-  if (heroSearchCount) heroSearchCount.textContent = carsArray.length;
-
-  carsArray.forEach(car => {
-    const card = document.createElement('div');
-    card.className = 'car-listing-card';
-
-    const monthly = calcInstallment(car.price);
-    const waUrl = makeCarWhatsAppUrl(car);
-
-    card.innerHTML = `
+  return `
+    <div class="car-listing-card">
       <div class="card-img-holder">
         <img src="${car.images[0]}" alt="${car.year} ${car.make} ${car.model}" loading="lazy">
         <span class="badge-dealer-verified"><i class="fa-solid fa-shield-check"></i> Duty Paid</span>
@@ -410,211 +398,35 @@ function renderCars(carsArray) {
         </div>
 
         <div class="card-cta-group">
-          <a href="${waUrl}" target="_blank" class="btn-card-whatsapp">
+          <a href="${waLink}" target="_blank" class="btn-card-whatsapp">
             <i class="fa-brands fa-whatsapp"></i> WhatsApp
           </a>
-          <button class="btn-card-details" onclick="viewCarModal(${car.id})">
+          <button class="btn-card-details" onclick="openCarModal(${car.id})">
             Details
           </button>
         </div>
       </div>
-    `;
-
-    carsListingGrid.appendChild(card);
-  });
+    </div>
+  `;
 }
-
-function renderAccessories() {
-  const partsGrid = document.getElementById('partsItemsGrid');
-  if (!partsGrid) return;
-  partsGrid.innerHTML = '';
-
-  parts.forEach(part => {
-    const card = document.createElement('div');
-    card.className = 'part-grid-card';
-    const waMsg = `Hello ZedCars Parts Desk,%0A%0AI am inquiring about the *${part.title}* (${formatZMW(part.price)}). Do you have stock in Zambia?`;
-    const waLink = `https://wa.me/${DEALER_WHATSAPP_MAIN}?text=${waMsg}`;
-
-    card.innerHTML = `
-      <img src="${part.image}" alt="${part.title}" class="part-card-img" loading="lazy">
-      <div class="part-card-body">
-        <span class="part-category">${part.category}</span>
-        <h4 class="part-card-title">${part.title}</h4>
-        <p class="part-card-desc">${part.desc}</p>
-        <div class="part-price-row">
-          <span class="part-price-val">${formatZMW(part.price)}</span>
-          <a href="${waLink}" target="_blank" class="btn-part-order">
-            <i class="fa-brands fa-whatsapp"></i> Inquire
-          </a>
-        </div>
-      </div>
-    `;
-    partsGrid.appendChild(card);
-  });
-}
-
-function filterAndSortCars() {
-  let list = [...vehicles];
-
-  // Keyword
-  if (currentFilters.keyword) {
-    const kw = currentFilters.keyword.toLowerCase().trim();
-    list = list.filter(c => 
-      c.make.toLowerCase().includes(kw) ||
-      c.model.toLowerCase().includes(kw) ||
-      c.year.toString().includes(kw) ||
-      c.location.toLowerCase().includes(kw) ||
-      c.stockId.toLowerCase().includes(kw)
-    );
-  }
-
-  // Make
-  if (currentFilters.make) {
-    list = list.filter(c => c.make.toLowerCase() === currentFilters.make.toLowerCase());
-  }
-
-  // Province / City
-  if (currentFilters.location) {
-    list = list.filter(c => c.location.toLowerCase().includes(currentFilters.location.toLowerCase()));
-  }
-
-  // Category
-  if (currentFilters.category && currentFilters.category !== 'all') {
-    list = list.filter(c => c.bodyType.toLowerCase() === currentFilters.category.toLowerCase());
-  }
-
-  // Min Price
-  if (currentFilters.minPrice) {
-    list = list.filter(c => c.price >= Number(currentFilters.minPrice));
-  }
-
-  // Max Price
-  if (currentFilters.maxPrice) {
-    list = list.filter(c => c.price <= Number(currentFilters.maxPrice));
-  }
-
-  // Min Year
-  if (currentFilters.minYear) {
-    list = list.filter(c => c.year >= Number(currentFilters.minYear));
-  }
-
-  // Max Year
-  if (currentFilters.maxYear) {
-    list = list.filter(c => c.year <= Number(currentFilters.maxYear));
-  }
-
-  // Sorting
-  const sortBy = currentFilters.sortBy;
-  if (sortBy === 'price-asc') {
-    list.sort((a, b) => a.price - b.price);
-  } else if (sortBy === 'price-desc') {
-    list.sort((a, b) => b.price - a.price);
-  } else if (sortBy === 'year-desc') {
-    list.sort((a, b) => b.year - a.year);
-  } else if (sortBy === 'mileage-asc') {
-    list.sort((a, b) => a.mileage - b.mileage);
-  } else {
-    // featured first
-    list.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
-  }
-
-  renderCars(list);
-}
-
-function resetAllSearchFilters() {
-  currentFilters = {
-    keyword: '',
-    make: '',
-    location: '',
-    category: 'all',
-    minPrice: '',
-    maxPrice: '',
-    minYear: '',
-    maxYear: '',
-    sortBy: 'featured'
-  };
-
-  const kw = document.getElementById('carsKeywordInput');
-  const make = document.getElementById('heroSelectMake');
-  const prov = document.getElementById('heroSelectProvince');
-  const minP = document.getElementById('heroSelectMinPrice');
-  const maxP = document.getElementById('heroSelectMaxPrice');
-  const minY = document.getElementById('heroSelectMinYear');
-  const maxY = document.getElementById('heroSelectMaxYear');
-  const sort = document.getElementById('selectSortBy');
-
-  if (kw) kw.value = '';
-  if (make) make.value = '';
-  if (prov) prov.value = '';
-  if (minP) minP.value = '';
-  if (maxP) maxP.value = '';
-  if (minY) minY.value = '';
-  if (maxY) maxY.value = '';
-  if (sort) sort.value = 'featured';
-
-  document.querySelectorAll('.category-pill').forEach(pill => {
-    pill.classList.toggle('active', pill.getAttribute('data-category') === 'all');
-  });
-
-  filterAndSortCars();
-}
-
-// Global helpers for clicks from header or footer
-window.filterByMake = function(makeName) {
-  resetAllSearchFilters();
-  currentFilters.make = makeName;
-  const select = document.getElementById('heroSelectMake');
-  if (select) select.value = makeName;
-  filterAndSortCars();
-  scrollToSection('inventory');
-};
-
-window.filterByBody = function(bodyName) {
-  resetAllSearchFilters();
-  currentFilters.category = bodyName;
-  document.querySelectorAll('.category-pill').forEach(pill => {
-    pill.classList.toggle('active', pill.getAttribute('data-category') === bodyName);
-  });
-  filterAndSortCars();
-  scrollToSection('inventory');
-};
-
-window.scrollToSection = function(id) {
-  const el = document.getElementById(id);
-  if (el) el.scrollIntoView({ behavior: 'smooth' });
-};
-
-window.filterByPerk = function(type) {
-  if (type === 'drops') {
-    // Show specials
-    currentFilters.maxPrice = '400000';
-    filterAndSortCars();
-    scrollToSection('inventory');
-  } else if (type === 'compare') {
-    // Show top picks
-    filterAndSortCars();
-    scrollToSection('inventory');
-  } else {
-    scrollToSection('inventory');
-  }
-};
 
 // =========================================================
-// CAR DETAIL MODAL
+// MODAL ENGINE
 // =========================================================
-const carModalBackdrop = document.getElementById('carModalBackdrop');
-const carModalContent = document.getElementById('carModalContent');
-const modalCloseButton = document.getElementById('modalCloseButton');
-
-window.viewCarModal = function(id) {
+window.openCarModal = function(id) {
   const car = vehicles.find(v => v.id === id);
   if (!car) return;
 
-  const monthly = calcInstallment(car.price);
-  const waUrl = makeCarWhatsAppUrl(car);
-  const tdUrl = makeTestDriveUrl(car);
+  const modal = document.getElementById('carModalBackdrop');
+  const content = document.getElementById('carModalContent');
+  if (!modal || !content) return;
 
-  carModalContent.innerHTML = `
+  const monthly = calcInstallment(car.price);
+  const waLink = createCarWhatsAppUrl(car);
+  const testDriveMsg = `Hello ZedCars Zambia,%0A%0AI would like to *book a test drive* for the *${car.year} ${car.make} ${car.model}* (Ref: ${car.stockId}) at *${car.location}*.`;
+  const tdLink = `https://wa.me/${DEALER_WHATSAPP_MAIN}?text=${testDriveMsg}`;
+
+  content.innerHTML = `
     <div class="modal-photo-stage">
       <img src="${car.images[0]}" alt="${car.model}" class="modal-hero-photo" id="modalHeroPhoto">
     </div>
@@ -632,7 +444,7 @@ window.viewCarModal = function(id) {
         <div>
           <span style="color: #D01020; font-weight: 800; font-size: 0.82rem; text-transform: uppercase;">${car.year} • ${car.make}</span>
           <h3>${car.model}</h3>
-          <span style="font-size: 0.85rem; color: #6B7280; font-weight: 600;">Stock ID: ${car.stockId} | Location: ${car.location}, Zambia</span>
+          <span style="font-size: 0.85rem; color: #6B7280; font-weight: 600;">Stock Ref: ${car.stockId} | Location: ${car.location}, Zambia</span>
         </div>
         <div class="modal-price-col">
           <div class="modal-big-price">${formatZMW(car.price)}</div>
@@ -641,33 +453,15 @@ window.viewCarModal = function(id) {
       </div>
 
       <div class="modal-specs-grid">
-        <div class="modal-spec-cell">
-          <span>Mileage</span>
-          <strong>${car.mileage.toLocaleString()} km</strong>
-        </div>
-        <div class="modal-spec-cell">
-          <span>Transmission</span>
-          <strong>${car.transmission}</strong>
-        </div>
-        <div class="modal-spec-cell">
-          <span>Fuel</span>
-          <strong>${car.fuel}</strong>
-        </div>
-        <div class="modal-spec-cell">
-          <span>Body Type</span>
-          <strong>${car.bodyType}</strong>
-        </div>
-        <div class="modal-spec-cell">
-          <span>Exterior Color</span>
-          <strong>${car.color}</strong>
-        </div>
-        <div class="modal-spec-cell">
-          <span>Powertrain</span>
-          <strong>${car.engine}</strong>
-        </div>
+        <div class="modal-spec-cell"><span>Mileage</span><strong>${car.mileage.toLocaleString()} km</strong></div>
+        <div class="modal-spec-cell"><span>Transmission</span><strong>${car.transmission}</strong></div>
+        <div class="modal-spec-cell"><span>Fuel</span><strong>${car.fuel}</strong></div>
+        <div class="modal-spec-cell"><span>Body Style</span><strong>${car.bodyType}</strong></div>
+        <div class="modal-spec-cell"><span>Color</span><strong>${car.color}</strong></div>
+        <div class="modal-spec-cell"><span>Engine</span><strong>${car.engine}</strong></div>
       </div>
 
-      <h5 style="font-size: 0.95rem; font-weight: 800; margin-bottom: 8px;">Key Features &amp; Equipment:</h5>
+      <h5 style="font-size: 0.95rem; font-weight: 800; margin-bottom: 8px;">Key Features:</h5>
       <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px;">
         ${car.features.map(f => `<span style="background: #FEE2E2; color: #D01020; font-size: 0.8rem; font-weight: 700; padding: 4px 10px; border-radius: 9999px;">✓ ${f}</span>`).join('')}
       </div>
@@ -675,17 +469,17 @@ window.viewCarModal = function(id) {
       <p style="font-size: 0.9rem; color: #4B5563; line-height: 1.5; margin-bottom: 20px;">${car.description}</p>
 
       <div class="modal-actions-dual">
-        <a href="${waUrl}" target="_blank" class="btn-modal-wa-lead">
+        <a href="${waLink}" target="_blank" class="btn-modal-wa-lead">
           <i class="fa-brands fa-whatsapp"></i> Chat Dealer on WhatsApp
         </a>
-        <a href="${tdUrl}" target="_blank" class="btn-modal-testdrive-action">
+        <a href="${tdLink}" target="_blank" class="btn-modal-testdrive-action">
           <i class="fa-solid fa-calendar-check"></i> Book Test Drive
         </a>
       </div>
     </div>
   `;
 
-  carModalBackdrop.classList.add('active');
+  modal.classList.add('active');
   document.body.style.overflow = 'hidden';
 };
 
@@ -697,265 +491,250 @@ window.swapModalPhoto = function(src, btn) {
 };
 
 function closeCarModal() {
-  if (carModalBackdrop) carModalBackdrop.classList.remove('active');
+  const modal = document.getElementById('carModalBackdrop');
+  if (modal) modal.classList.remove('active');
   document.body.style.overflow = 'auto';
 }
 
 // =========================================================
-// FINANCE CALCULATOR
-// =========================================================
-function setupFinanceCalculator() {
-  const priceSlider = document.getElementById('financePriceSlider');
-  const depositSlider = document.getElementById('financeDepositSlider');
-  const termSlider = document.getElementById('financeTermSlider');
-  const rateSlider = document.getElementById('financeRateSlider');
-
-  const priceLabel = document.getElementById('financePriceLabel');
-  const depPctLabel = document.getElementById('financeDepositPctLabel');
-  const depAmtLabel = document.getElementById('financeDepositAmountLabel');
-  const termLabel = document.getElementById('financeTermLabel');
-  const rateLabel = document.getElementById('financeRateLabel');
-  const resultVal = document.getElementById('monthlyInstallmentVal');
-  const waBtn = document.getElementById('btnFinanceWhatsApp');
-
-  function updateCalc() {
-    if (!priceSlider) return;
-    const price = Number(priceSlider.value);
-    const depPct = Number(depositSlider.value);
-    const term = Number(termSlider.value);
-    const rate = Number(rateSlider.value);
-
-    const depAmount = price * (depPct / 100);
-    const installment = calcInstallment(price, depPct, term, rate);
-
-    priceLabel.textContent = formatZMW(price);
-    depPctLabel.textContent = `${depPct}%`;
-    depAmtLabel.textContent = formatZMW(depAmount);
-    termLabel.textContent = `${term} Months`;
-    rateLabel.textContent = `${rate.toFixed(1)}% p.a.`;
-
-    resultVal.innerHTML = `${formatZMW(installment)} <span class="pm-sub">/ month</span>`;
-
-    if (waBtn) {
-      const msg = `Hello ZedCars Finance Specialist,%0A%0AI would like to apply for car loan pre-approval:%0A%0A💰 *Target Vehicle Price:* ${formatZMW(price)}%0A💵 *Deposit:* ${formatZMW(depAmount)} (${depPct}%)%0A📅 *Loan Term:* ${term} Months%0A📈 *Interest Rate:* ${rate}%25 p.a.%0A💳 *Est. Monthly Repayment:* ${formatZMW(installment)}/month%0A%0APlease let me know the requirements for Stanbic/Absa/Zanaco financing.`;
-      waBtn.href = `https://wa.me/${DEALER_WHATSAPP_FINANCE}?text=${msg}`;
-    }
-  }
-
-  [priceSlider, depositSlider, termSlider, rateSlider].forEach(slider => {
-    if (slider) slider.addEventListener('input', updateCalc);
-  });
-
-  updateCalc();
-}
-
-// =========================================================
-// INSTANT VALUATION MODAL ("Get the Best Offer Now")
-// =========================================================
-const instantValuationModal = document.getElementById('instantValuationModal');
-const btnOpenInstantModal = document.getElementById('btnOpenInstantModal');
-const valuationCloseButton = document.getElementById('valuationCloseButton');
-const instantSellForm = document.getElementById('instantSellForm');
-
-function setupValuationModal() {
-  if (btnOpenInstantModal) {
-    btnOpenInstantModal.addEventListener('click', () => {
-      instantValuationModal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    });
-  }
-
-  if (valuationCloseButton) {
-    valuationCloseButton.addEventListener('click', () => {
-      instantValuationModal.classList.remove('active');
-      document.body.style.overflow = 'auto';
-    });
-  }
-
-  if (instantSellForm) {
-    instantSellForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const make = document.getElementById('valMake').value.trim();
-      const model = document.getElementById('valModel').value.trim();
-      const year = document.getElementById('valYear').value;
-      const mileage = document.getElementById('valMileage').value.trim();
-      const city = document.getElementById('valCity').value;
-      const price = document.getElementById('valPrice').value.trim();
-      const notes = document.getElementById('valNotes').value.trim();
-
-      const priceDisplay = price ? formatZMW(price) : 'Open to highest cash offer';
-
-      const msg = `Hello ZedCars Valuation Team! 🚘%0A%0AI want an instant cash offer for my vehicle:%0A%0A📋 *Vehicle:* ${year} ${make} ${model}%0A🛣️ *Mileage:* ${Number(mileage).toLocaleString()} km%0A📍 *Location:* ${city}, Zambia%0A💰 *Expected Price:* ${priceDisplay}%0A📝 *Condition & Notes:* ${encodeURIComponent(notes || 'Good running condition, all documents intact')}%0A%0APlease contact me with your best valuation.`;
-
-      window.open(`https://wa.me/${DEALER_WHATSAPP_COPPERBELT}?text=${msg}`, '_blank');
-      instantValuationModal.classList.remove('active');
-      document.body.style.overflow = 'auto';
-    });
-  }
-}
-
-// =========================================================
-// INITIALIZATION ON DOM LOAD
+// PAGE INITIALIZATION
 // =========================================================
 document.addEventListener('DOMContentLoaded', () => {
-  renderCars(vehicles);
-  renderAccessories();
-  setupFinanceCalculator();
-  setupValuationModal();
-
-  // Search Input
-  const keywordInput = document.getElementById('carsKeywordInput');
-  if (keywordInput) {
-    keywordInput.addEventListener('input', (e) => {
-      currentFilters.keyword = e.target.value;
-      filterAndSortCars();
+  // Common: Close modals
+  const modalClose = document.getElementById('modalCloseButton');
+  const modalBackdrop = document.getElementById('carModalBackdrop');
+  if (modalClose) modalClose.addEventListener('click', closeCarModal);
+  if (modalBackdrop) {
+    modalBackdrop.addEventListener('click', (e) => {
+      if (e.target === modalBackdrop) closeCarModal();
     });
   }
 
-  // Hero dropdowns
-  const heroMake = document.getElementById('heroSelectMake');
-  if (heroMake) {
-    heroMake.addEventListener('change', (e) => {
-      currentFilters.make = e.target.value;
-      filterAndSortCars();
-    });
-  }
-
-  const heroProv = document.getElementById('heroSelectProvince');
-  if (heroProv) {
-    heroProv.addEventListener('change', (e) => {
-      currentFilters.location = e.target.value;
-      filterAndSortCars();
-    });
-  }
-
-  const heroMinPrice = document.getElementById('heroSelectMinPrice');
-  if (heroMinPrice) {
-    heroMinPrice.addEventListener('change', (e) => {
-      currentFilters.minPrice = e.target.value;
-      filterAndSortCars();
-    });
-  }
-
-  const heroMaxPrice = document.getElementById('heroSelectMaxPrice');
-  if (heroMaxPrice) {
-    heroMaxPrice.addEventListener('change', (e) => {
-      currentFilters.maxPrice = e.target.value;
-      filterAndSortCars();
-    });
-  }
-
-  const heroMinYear = document.getElementById('heroSelectMinYear');
-  if (heroMinYear) {
-    heroMinYear.addEventListener('change', (e) => {
-      currentFilters.minYear = e.target.value;
-      filterAndSortCars();
-    });
-  }
-
-  const heroMaxYear = document.getElementById('heroSelectMaxYear');
-  if (heroMaxYear) {
-    heroMaxYear.addEventListener('change', (e) => {
-      currentFilters.maxYear = e.target.value;
-      filterAndSortCars();
-    });
-  }
-
-  // Reset button
-  const btnReset = document.getElementById('btnHeroReset');
-  if (btnReset) {
-    btnReset.addEventListener('click', resetAllSearchFilters);
-  }
-
-  const btnClearAll = document.getElementById('btnClearAllFilters');
-  if (btnClearAll) {
-    btnClearAll.addEventListener('click', resetAllSearchFilters);
-  }
-
-  // Hero Search Button
-  const btnHeroSearch = document.getElementById('btnHeroSearch');
-  if (btnHeroSearch) {
-    btnHeroSearch.addEventListener('click', () => {
-      filterAndSortCars();
-      scrollToSection('inventory');
-    });
-  }
-
-  // Category Pills
-  const pills = document.querySelectorAll('.category-pill');
-  pills.forEach(pill => {
-    pill.addEventListener('click', () => {
-      pills.forEach(p => p.classList.remove('active'));
-      pill.classList.add('active');
-      currentFilters.category = pill.getAttribute('data-category');
-      filterAndSortCars();
-    });
-  });
-
-  // Sort By
-  const sortSelect = document.getElementById('selectSortBy');
-  if (sortSelect) {
-    sortSelect.addEventListener('change', (e) => {
-      currentFilters.sortBy = e.target.value;
-      filterAndSortCars();
-    });
-  }
-
-  // Cash / Monthly payment toggle in Hero
-  const btnModeCash = document.getElementById('btnModeCash');
-  const btnModeMonthly = document.getElementById('btnModeMonthly');
-  if (btnModeCash && btnModeMonthly) {
-    btnModeCash.addEventListener('click', () => {
-      btnModeCash.classList.add('active');
-      btnModeMonthly.classList.remove('active');
-    });
-    btnModeMonthly.addEventListener('click', () => {
-      btnModeMonthly.classList.add('active');
-      btnModeCash.classList.remove('active');
-      scrollToSection('finance');
-    });
-  }
-
-  // Members Card Close
-  const membersCloseBtn = document.getElementById('membersCloseBtn');
-  const membersCard = document.getElementById('membersCard');
-  if (membersCloseBtn && membersCard) {
-    membersCloseBtn.addEventListener('click', () => {
-      membersCard.style.display = 'none';
-    });
-  }
-
-  // Modal Close
-  if (modalCloseButton) {
-    modalCloseButton.addEventListener('click', closeCarModal);
-  }
-  if (carModalBackdrop) {
-    carModalBackdrop.addEventListener('click', (e) => {
-      if (e.target === carModalBackdrop) closeCarModal();
-    });
-  }
-
-  // Floating WhatsApp
+  // Common: Floating WhatsApp Widget
   const floatingTrigger = document.getElementById('floatingWaTrigger');
   const waChatWindow = document.getElementById('waChatWindow');
   const waChatClose = document.getElementById('waChatClose');
   if (floatingTrigger && waChatWindow) {
-    floatingTrigger.addEventListener('click', () => {
-      waChatWindow.classList.toggle('open');
-    });
+    floatingTrigger.addEventListener('click', () => waChatWindow.classList.toggle('open'));
   }
   if (waChatClose && waChatWindow) {
-    waChatClose.addEventListener('click', () => {
-      waChatWindow.classList.remove('open');
-    });
+    waChatClose.addEventListener('click', () => waChatWindow.classList.remove('open'));
   }
 
-  // Cookie Banner Ok button
+  // Common: Cookie Banner
   const btnCookieOk = document.getElementById('btnCookieOk');
   const cookieBanner = document.getElementById('cookieBanner');
   if (btnCookieOk && cookieBanner) {
-    btnCookieOk.addEventListener('click', () => {
-      cookieBanner.style.display = 'none';
+    btnCookieOk.addEventListener('click', () => cookieBanner.style.display = 'none');
+  }
+
+  // Common: Members Card Close (Home page)
+  const membersCloseBtn = document.getElementById('membersCloseBtn');
+  const membersCard = document.getElementById('membersCard');
+  if (membersCloseBtn && membersCard) {
+    membersCloseBtn.addEventListener('click', () => membersCard.style.display = 'none');
+  }
+
+  // -------------------------------------------------------------
+  // 1. HOME PAGE (index.html): Compact Featured Preview Only
+  // -------------------------------------------------------------
+  const homeFeaturedGrid = document.getElementById('homeFeaturedGrid');
+  if (homeFeaturedGrid) {
+    // Show top 3 featured vehicles only (No long scrolling!)
+    const featuredCars = vehicles.filter(v => v.featured).slice(0, 3);
+    homeFeaturedGrid.innerHTML = featuredCars.map(car => createCarCardHtml(car)).join('');
+  }
+
+  // -------------------------------------------------------------
+  // 2. BUY CAR PAGE (buy-car.html): Full Filterable Catalog
+  // -------------------------------------------------------------
+  const buyPageCarsGrid = document.getElementById('buyPageCarsGrid');
+  if (buyPageCarsGrid) {
+    const buyPageCount = document.getElementById('buyPageCount');
+    const buyPageNoCars = document.getElementById('buyPageNoCars');
+
+    const sbKeyword = document.getElementById('sbKeyword');
+    const sbMake = document.getElementById('sbMake');
+    const sbBody = document.getElementById('sbBody');
+    const sbMaxPrice = document.getElementById('sbMaxPrice');
+    const sbLocation = document.getElementById('sbLocation');
+    const sbSort = document.getElementById('sbSort');
+    const btnSidebarReset = document.getElementById('btnSidebarReset');
+    const btnBuyResetEmpty = document.getElementById('btnBuyResetEmpty');
+
+    // Parse URL params (e.g. from Home search form or header links)
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('keyword') && sbKeyword) sbKeyword.value = urlParams.get('keyword');
+    if (urlParams.get('make') && sbMake) sbMake.value = urlParams.get('make');
+    if (urlParams.get('category') && sbBody) sbBody.value = urlParams.get('category');
+    if (urlParams.get('body') && sbBody) sbBody.value = urlParams.get('body');
+    if (urlParams.get('maxPrice') && sbMaxPrice) sbMaxPrice.value = urlParams.get('maxPrice');
+    if (urlParams.get('location') && sbLocation) sbLocation.value = urlParams.get('location');
+
+    function filterBuyCars() {
+      let list = [...vehicles];
+      const kw = sbKeyword ? sbKeyword.value.toLowerCase().trim() : '';
+      const make = sbMake ? sbMake.value.toLowerCase() : '';
+      const body = sbBody ? sbBody.value.toLowerCase() : '';
+      const maxPrice = sbMaxPrice && sbMaxPrice.value ? Number(sbMaxPrice.value) : 0;
+      const location = sbLocation ? sbLocation.value.toLowerCase() : '';
+      const sort = sbSort ? sbSort.value : 'featured';
+
+      if (kw) {
+        list = list.filter(c => 
+          c.make.toLowerCase().includes(kw) ||
+          c.model.toLowerCase().includes(kw) ||
+          c.year.toString().includes(kw) ||
+          c.stockId.toLowerCase().includes(kw)
+        );
+      }
+      if (make) {
+        list = list.filter(c => c.make.toLowerCase() === make);
+      }
+      if (body) {
+        list = list.filter(c => c.bodyType.toLowerCase() === body);
+      }
+      if (maxPrice > 0) {
+        list = list.filter(c => c.price <= maxPrice);
+      }
+      if (location) {
+        list = list.filter(c => c.location.toLowerCase().includes(location));
+      }
+
+      if (sort === 'price-asc') list.sort((a, b) => a.price - b.price);
+      else if (sort === 'price-desc') list.sort((a, b) => b.price - a.price);
+      else if (sort === 'year-desc') list.sort((a, b) => b.year - a.year);
+      else if (sort === 'mileage-asc') list.sort((a, b) => a.mileage - b.mileage);
+      else list.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
+
+      if (buyPageCount) buyPageCount.textContent = list.length;
+
+      if (list.length === 0) {
+        buyPageCarsGrid.innerHTML = '';
+        if (buyPageNoCars) buyPageNoCars.style.display = 'block';
+      } else {
+        if (buyPageNoCars) buyPageNoCars.style.display = 'none';
+        buyPageCarsGrid.innerHTML = list.map(car => createCarCardHtml(car)).join('');
+      }
+    }
+
+    function resetBuyFilters() {
+      if (sbKeyword) sbKeyword.value = '';
+      if (sbMake) sbMake.value = '';
+      if (sbBody) sbBody.value = '';
+      if (sbMaxPrice) sbMaxPrice.value = '';
+      if (sbLocation) sbLocation.value = '';
+      if (sbSort) sbSort.value = 'featured';
+      filterBuyCars();
+    }
+
+    [sbKeyword, sbMake, sbBody, sbMaxPrice, sbLocation, sbSort].forEach(input => {
+      if (input) {
+        input.addEventListener('input', filterBuyCars);
+        input.addEventListener('change', filterBuyCars);
+      }
     });
+
+    if (btnSidebarReset) btnSidebarReset.addEventListener('click', resetBuyFilters);
+    if (btnBuyResetEmpty) btnBuyResetEmpty.addEventListener('click', resetBuyFilters);
+
+    filterBuyCars();
+  }
+
+  // -------------------------------------------------------------
+  // 3. SELL CAR PAGE (sell-car.html): Instant Valuation to WhatsApp
+  // -------------------------------------------------------------
+  const sellPageForm = document.getElementById('sellPageForm');
+  if (sellPageForm) {
+    sellPageForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const make = document.getElementById('spMake').value.trim();
+      const model = document.getElementById('spModel').value.trim();
+      const year = document.getElementById('spYear').value;
+      const mileage = document.getElementById('spMileage').value.trim();
+      const city = document.getElementById('spCity').value;
+      const price = document.getElementById('spPrice').value.trim();
+
+      const priceLabel = price ? formatZMW(price) : 'Open to highest cash offer';
+
+      const msg = `Hello ZedCars Acquisitions Team! 🚘%0A%0AI would like a cash valuation for my vehicle:%0A%0A📋 *Vehicle:* ${year} ${make} ${model}%0A🛣️ *Mileage:* ${Number(mileage).toLocaleString()} km%0A📍 *Location:* ${city}, Zambia%0A💰 *Expected Price:* ${priceLabel}%0A%0APlease contact me with your best cash offer.`;
+
+      window.open(`https://wa.me/${DEALER_WHATSAPP_COPPERBELT}?text=${msg}`, '_blank');
+    });
+  }
+
+  // -------------------------------------------------------------
+  // 4. FINANCE CALCULATOR PAGE (finance.html)
+  // -------------------------------------------------------------
+  const priceSlider = document.getElementById('financePriceSlider');
+  if (priceSlider) {
+    const depositSlider = document.getElementById('financeDepositSlider');
+    const termSlider = document.getElementById('financeTermSlider');
+    const rateSlider = document.getElementById('financeRateSlider');
+
+    const priceLabel = document.getElementById('financePriceLabel');
+    const depPctLabel = document.getElementById('financeDepositPctLabel');
+    const depAmtLabel = document.getElementById('financeDepositAmountLabel');
+    const termLabel = document.getElementById('financeTermLabel');
+    const rateLabel = document.getElementById('financeRateLabel');
+    const resultVal = document.getElementById('monthlyInstallmentVal');
+    const waBtn = document.getElementById('btnFinanceWhatsApp');
+
+    function updateFinance() {
+      const price = Number(priceSlider.value);
+      const depPct = Number(depositSlider.value);
+      const term = Number(termSlider.value);
+      const rate = Number(rateSlider.value);
+
+      const depAmount = price * (depPct / 100);
+      const installment = calcInstallment(price, depPct, term, rate);
+
+      priceLabel.textContent = formatZMW(price);
+      depPctLabel.textContent = `${depPct}%`;
+      depAmtLabel.textContent = formatZMW(depAmount);
+      termLabel.textContent = `${term} Months`;
+      rateLabel.textContent = `${rate.toFixed(1)}% p.a.`;
+
+      resultVal.innerHTML = `${formatZMW(installment)} <span class="pm-sub">/ month</span>`;
+
+      if (waBtn) {
+        const msg = `Hello ZedCars Finance Specialist,%0A%0AI would like to apply for car loan pre-approval with the following terms:%0A%0A💰 *Vehicle Price:* ${formatZMW(price)}%0A💵 *Deposit:* ${formatZMW(depAmount)} (${depPct}%)%0A📅 *Loan Term:* ${term} Months%0A📈 *Rate:* ${rate}%25 p.a.%0A💳 *Est. Installment:* ${formatZMW(installment)}/month%0A%0APlease advise on Stanbic/Absa/Zanaco requirements.`;
+        waBtn.href = `https://wa.me/${DEALER_WHATSAPP_FINANCE}?text=${msg}`;
+      }
+    }
+
+    [priceSlider, depositSlider, termSlider, rateSlider].forEach(slider => {
+      if (slider) slider.addEventListener('input', updateFinance);
+    });
+
+    updateFinance();
+  }
+
+  // -------------------------------------------------------------
+  // 5. PARTS PAGE (parts.html)
+  // -------------------------------------------------------------
+  const partsGrid = document.getElementById('partsItemsGrid');
+  if (partsGrid) {
+    partsGrid.innerHTML = partsData.map(part => {
+      const msg = `Hello ZedCars Parts Desk,%0A%0AI want to order/inquire about the *${part.title}* (${formatZMW(part.price)}). Do you have stock in Zambia?`;
+      const waLink = `https://wa.me/${DEALER_WHATSAPP_MAIN}?text=${msg}`;
+
+      return `
+        <div class="part-grid-card">
+          <img src="${part.image}" alt="${part.title}" class="part-card-img" loading="lazy">
+          <div class="part-card-body">
+            <span class="part-category">${part.category}</span>
+            <h4 class="part-card-title">${part.title}</h4>
+            <p class="part-card-desc">${part.desc}</p>
+            <div class="part-price-row">
+              <span class="part-price-val">${formatZMW(part.price)}</span>
+              <a href="${waLink}" target="_blank" class="btn-part-order">
+                <i class="fa-brands fa-whatsapp"></i> Order
+              </a>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
   }
 });
